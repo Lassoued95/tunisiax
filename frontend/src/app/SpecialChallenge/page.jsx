@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Activities } from "../data/data";
 import Image from "next/image";
-import SecondNavbar from "../../components/secondNavbar/page";
+import SecondNavbar from "../../components/secondnavbar/page";
 import { ArrowUpRight } from "lucide-react";
 
 export default function ActivitiesPage() {
