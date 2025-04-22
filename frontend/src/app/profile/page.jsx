@@ -1,5 +1,5 @@
 import ProfileCard from "../../components/profile/ProfileCard";
-import SecondNavbar from "../../components/secondnavbar/page";
+import SecondNavbar from "../../components/secondNavbar/page";
 import Footer from "../../components/footer/page";
 export default function ProfilePage() {
   return (

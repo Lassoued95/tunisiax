@@ -2,7 +2,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
-
+import SecondNavbar from "./src/components/secondNavbar/page.jsx"
 import { Search, Users, Home, BarChart2, User } from "lucide-react"
 import { UsersData, ProfileData } from "../data/data"
 
@@ -15,7 +15,7 @@ export default function CommunityPage() {
 
   return (
     <>
-     
+      <SecondNavbar className="bg-[#e4e3f0]" />
 
       <div className="bg-[#2E36A4] pt-16 flex justify-center">
         <div className="w-[70%] h-[50%] bg-[#5D4FE1] min-h-screen pb-16">

@@ -1,6 +1,6 @@
 "use client"
 import { UsersData } from "../data/data"
-import SecondNavbar from "../../components/secondnavbar/page"
+import SecondNavbar from "../../components/secondNavbar/page"
 import Footer from "../../components/footer/page"
 import { Users, UserCheck, Star } from "lucide-react"
 import {
