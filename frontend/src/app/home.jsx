@@ -1,80 +1,8 @@
 "use client";
-import Navbar from "../components/navbar/page";
-import Footer from "../components/footer/page";
+import {activities} from "./data/data"
 import Link from "next/link";
 import Image from "next/image";
 
-const activities = [
-  {
-    id: 1,
-    title: "Hit Party",
-    images: [
-      { src: "/activities/pic11.jpg", alt: "Hit Party thumbnail 1" },
-      { src: "/activities/pic1.jpg", alt: "Hit Party thumbnail 2" },
-    ],
-    tags: [
-      { label: "🔥 Hot", className: "bg-yellow-100 text-yellow-800" },
-      { label: "1000 m away", className: "" },
-    ],
-    rating: { stars: "★★★★", score: "4.1" },
-    description:
-      "Meet new people and have fun in a safe and energetic environment. Let’s make memories together!",
-  },
-  {
-    id: 2,
-    title: "Segya Splash & Dine Challenge",
-    images: [
-      { src: "/activities/21.png", alt: "Segya Beach swimming" },
-      { src: "/activities/22.jpg", alt: "Segye Restaurant interior" },
-    ],
-    tags: [
-      { label: "🏊 Beach", className: "bg-blue-100 text-blue-800" },
-      { label: "📸 Photo Challenge", className: "bg-red-100 text-red-800" },
-      { label: "800 m away", className: "" },
-    ],
-    rating: { stars: "★★★★★", score: "4.9" },
-    description:
-      'Join the "Blue Hour Challenge": Swim at sunset, snap a selfie with Segye’s octopus dish, win an NFT badge + 20% off water sports!',
-    extraBadges: [
-      { label: "🏆 Leaderboard", className: "bg-[#5D4FE1] text-white" },
-      { label: "🔒 SafeRoute Verified", className: "bg-green-100 text-green-800" },
-    ],
-    link: { text: "Scan Proof ↗", href: "#" },
-  },
-  {
-    id: 3,
-    title: "Mountain Hike Adventure",
-    images: [
-      { src: "/activities/mountain1.jpg", alt: "Hike trail" },
-      { src: "/activities/mountain2.jpg", alt: "Peak view" },
-    ],
-    tags: [
-      { label: "⛰️ Outdoor", className: "bg-green-100 text-green-800" },
-      { label: "2.5 km away", className: "" },
-    ],
-    rating: { stars: "★★★☆", score: "3.8" },
-    description:
-      "Join the crew for a scenic mountain hike! Fresh air, great company, and unforgettable views await.",
-  },
-  {
-    id: 4,
-    title: "Cultural Night Fiesta",
-    images: [
-      { src: "/activities/culture1.jpg", alt: "Traditional dance" },
-      { src: "/activities/culture2.jpg", alt: "Food stand" },
-    ],
-    tags: [
-      { label: "🎭 Culture", className: "bg-purple-100 text-purple-800" },
-      { label: "🌃 Nightlife", className: "bg-indigo-100 text-indigo-800" },
-    ],
-    rating: { stars: "★★★★☆", score: "4.3" },
-    description:
-      "Experience vibrant traditions, mouthwatering cuisine, and live performances under the stars.",
-    extraBadges: [
-      { label: "🌍 Local Guide", className: "bg-[#5D4FE1]/90 text-white" },
-    ],
-  },
-];
 
 export default function HomePage() {
   return (
@@ -93,6 +21,7 @@ export default function HomePage() {
             Whether you're chasing goals, sharing ideas, or sparking collaboration, this is your space to shine.
           </p>
         </section>
+        
 
         {/* Recent Activities */}
         <h2 className="text-2xl font-semibold text-center mb-6">

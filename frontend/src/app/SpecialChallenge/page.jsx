@@ -1,10 +1,46 @@
 "use client";
+import { useState, useEffect } from "react";
 import { Activities } from "../data/data";
 import Image from "next/image";
 import SecondNavbar from "../../components/secondNavbar/page";
 import { ArrowUpRight } from "lucide-react";
 
 export default function ActivitiesPage() {
+  // State for the timer
+  const [timeLeft, setTimeLeft] = useState(300); // 300 seconds = 5 minutes
+  const [isChallengeActive, setIsChallengeActive] = useState(false);
+
+  // Timer countdown effect
+  useEffect(() => {
+    let timer;
+    if (isChallengeActive && timeLeft > 0) {
+      timer = setInterval(() => {
+        setTimeLeft((prevTime) => prevTime - 1);
+      }, 1000);
+    } else if (timeLeft === 0) {
+      clearInterval(timer);
+      alert("Challenge time's up! Claim your reward.");
+    }
+
+    // Clear interval on component unmount
+    return () => clearInterval(timer);
+  }, [isChallengeActive, timeLeft]);
+
+  // Start challenge button click handler
+  const startChallenge = () => {
+    setIsChallengeActive(true);
+    setTimeLeft(300); // Reset the timer to 5 minutes each time the challenge starts
+  };
+
+  // Format time
+ // Format time
+const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+  };
+  
+
   return (
     <>
       <SecondNavbar />
@@ -14,14 +50,37 @@ export default function ActivitiesPage() {
             🌍 Discover New Adventures
           </h2>
 
+          <div className="flex justify-center mb-10">
+            <button
+              onClick={startChallenge}
+              className="bg-[#5D4FE1] text-white py-2 px-6 rounded-full font-semibold text-lg shadow-md hover:bg-[#4b3bc8] transition-all duration-300"
+            >
+              Start Special Challenge ⏳
+            </button>
+          </div>
+
+          {/* Timer and Challenge Section */}
+          {isChallengeActive && (
+            <div className="bg-white p-6 rounded-lg shadow-xl text-center mb-8">
+              <h3 className="text-2xl font-semibold text-[#2E36A4] mb-4">
+                Special Challenge: Time Remaining
+              </h3>
+              <p className="text-lg font-medium text-gray-700 mb-4">
+                Time left: <span className="font-bold">{formatTime(timeLeft)}</span>
+              </p>
+              <div className="bg-[#4CAF50] text-white rounded-full py-2 px-4 w-max mx-auto">
+                <span>Win Special Badge! 🏆</span>
+              </div>
+            </div>
+          )}
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {Activities.map((activity) => (
               <div
                 key={activity.id}
                 className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-[1.02] transition-all duration-300 border border-white/60"
               >
-                {/* Image carousel */}
-                <div className="flex gap-3 overflow-x-auto scrollbar-hide p-3">
+                <div className="flex gap-3 overflow-x-auto p-3">
                   {activity.images.map((img, index) => (
                     <Image
                       key={index}
@@ -34,7 +93,6 @@ export default function ActivitiesPage() {
                   ))}
                 </div>
 
-                {/* Content */}
                 <div className="p-5 space-y-3">
                   <div className="flex justify-between items-center">
                     <h3 className="text-xl font-semibold text-[#2E36A4]">
@@ -49,7 +107,6 @@ export default function ActivitiesPage() {
 
                   <p className="text-gray-600 text-sm">{activity.description}</p>
 
-                  {/* Tags */}
                   <div className="flex flex-wrap gap-2">
                     {activity.tags?.map((tag, i) => (
                       <span
@@ -61,21 +118,6 @@ export default function ActivitiesPage() {
                     ))}
                   </div>
 
-                  {/* Badges */}
-                  {activity.extraBadges?.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {activity.extraBadges.map((badge, idx) => (
-                        <span
-                          key={idx}
-                          className={`text-xs font-medium px-2 py-1 rounded-full ${badge.className}`}
-                        >
-                          {badge.label}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Footer link and points */}
                   <div className="flex justify-between items-center pt-4">
                     <a
                       href={activity.link?.href || "#"}

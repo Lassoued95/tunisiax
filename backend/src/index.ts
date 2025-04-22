@@ -1,10 +1,16 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import userRoute from './routes/userRoute';
+import cors from 'cors';
+
+// Before your routes
+
+
 
 
 const app = express();
 const port = 5000;
+app.use(cors());
 
 app.use(express.json()); // required to parse JSON bodies
 

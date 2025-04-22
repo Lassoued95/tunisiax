@@ -1,6 +1,7 @@
 "use client"
 import { UsersData } from "../data/data"
-import Navbar from "../../components/navbar/page"
+import SecondNavbar from "../../components/secondnavbar/page"
+import Footer from "../../components/footer/page"
 import { Users, UserCheck, Star } from "lucide-react"
 import {
   LineChart,
@@ -48,7 +49,7 @@ export default function StatsPage() {
 
   return (
     <>
-      <Navbar className="bg-[#e4e3f0]" />
+      <SecondNavbar className="bg-[#e4e3f0]" />
       <div className="bg-[#2E36A4] pt-16 flex justify-center">
         <div className="w-[85%] min-h-screen pb-16 bg-[#5D4FE1] p-6">
           <h1 className="text-white text-2xl font-semibold mb-6">Community Stats</h1>
@@ -110,6 +111,8 @@ export default function StatsPage() {
           </div>
         </div>
       </div>
+      <Footer className="bg-[#5D4FE1]" />
+      
     </>
   )
 }

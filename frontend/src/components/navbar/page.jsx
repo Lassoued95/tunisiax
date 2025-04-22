@@ -7,7 +7,7 @@ export default function Navbar({ className = "" }) {
       <Link href="/" className="flex items-center gap-2">
         <h1 className="text-3xl font-extrabold tracking-tight select-none">
           <span className="text-white">Tunisia</span>
-          <span className="text-[#F1F1F1]">X</span>
+          <span className="text-black">X</span>
         </h1>
       </Link>
 
