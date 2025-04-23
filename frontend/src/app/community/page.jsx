@@ -2,7 +2,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
-import SecondNavbar from "./src/components/secondNavbar/page.jsx"
+import SecondNavbar from "../../components/secondnavbar/page";
 import { Search, Users, Home, BarChart2, User } from "lucide-react"
 import { UsersData, ProfileData } from "../data/data"
 
