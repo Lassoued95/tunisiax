@@ -4,6 +4,7 @@ import HomePage from "./home"
 import Navbar from "../components/navbar/page";
 import Footer from "../components/footer/page";
 
+
 export default function Home() {
   return (
     <>
@@ -11,6 +12,7 @@ export default function Home() {
     <Navbar/>
     <HomePage/>
     <Footer/>
+    
     
     </>
     

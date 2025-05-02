@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation'; // for redirect
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function LoginPage() {
   const [form, setForm] = useState({ email: '', password: '' });
+  const [message, setMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
   const router = useRouter();
 
   const handleChange = (e) => {
@@ -24,19 +26,36 @@ export default function LoginPage() {
         body: JSON.stringify(form)
       });
 
-      const data = await res.text(); // still text
+      const data = await res.json();
+      const role = data.role;
+
 
       if (res.ok) {
-        alert('Login successful!');
-        localStorage.setItem('token', data); // Save JWT
-        router.push('/activities'); // Navigate after successful login
-      } else {
-        alert(`Error: ${data}`);
+        setMessage('Login successful! Redirecting...');
+        setIsSuccess(true);
+        if(role=="admin"){
+          setTimeout(() => {
+            router.push('/dashboard');
+            console.log("hhhh");
+            
+          }, 2000);
+
+        }else{
+        setTimeout(() => {
+          router.push('/activities');
+        }, 2000); }// wait 2 seconds then redirect
+      } 
+      
+      else {
+        setMessage(`Error: ${data.message || 'Unknown error'}`);
+        setIsSuccess(false);
       }
+      
 
     } catch (error) {
       console.error('Error:', error);
-      alert('Something went wrong.');
+      setMessage('Something went wrong.');
+      setIsSuccess(false);
     }
   };
 
@@ -63,6 +82,14 @@ export default function LoginPage() {
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9F7FFF]"
             required
           />
+
+          {/* Message */}
+          {message && (
+            <p className={`text-center text-sm ${isSuccess ? 'text-green-600' : 'text-red-600'}`}>
+              {message}
+            </p>
+          )}
+
           <button
             type="submit"
             className="w-full bg-[#8055FE] text-white py-2 rounded-lg hover:bg-[#6b46c1] transition-colors"
@@ -70,6 +97,7 @@ export default function LoginPage() {
             Log In
           </button>
         </form>
+
         <p className="mt-4 text-center text-sm text-gray-600">
           Don't have an account?{' '}
           <Link href="/signup" className="text-[#8055FE] font-medium">Sign up</Link>

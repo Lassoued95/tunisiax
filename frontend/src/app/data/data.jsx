@@ -44,9 +44,53 @@ export const Activities = [
     ],
     link: { text: "Scan Proof ↗", href: "#" },
   },
-
+  {
+    id: 3,
+    title: "Echoes of El Jem Challenge",
+    images: [
+      { src: "/activities/31.jpg", alt: "El Jem Amphitheatre exterior view" },
+      { src: "/activities/32.jpg", alt: "Inside the ancient Roman colosseum" },
+    ],
+    tags: [
+      { label: "🏛️ Heritage", className: "bg-yellow-100 text-yellow-800" },
+      { label: "📸 Historical Snap", className: "bg-red-100 text-red-800" },
+      { label: "500 m away", className: "" },
+    ],
+    rating: { stars: "★★★★★", score: "4.8" },
+    description:
+      'Take on the "Echoes of El Jem": Record your voice in the arena’s center, snap a dramatic pose under the arches, and win a virtual relic + 25% off guided tours!',
+    extraBadges: [
+      { label: "🏆 Leaderboard", className: "bg-[#5D4FE1] text-white" },
+      { label: "🔒 SafeRoute Verified", className: "bg-green-100 text-green-800" },
+    ],
+    link: { text: "Submit Entry ↗", href: "#" },
+  },
+  
+  
   {
     id: 4,
+    title: "Segya Splash & Dine Challenge",
+    images: [
+      { src: "/activities/21.png", alt: "Segya Beach swimming" },
+      { src: "/activities/22.jpg", alt: "Segye Restaurant interior" },
+    ],
+    tags: [
+      { label: "🏊 Beach", className: "bg-blue-100 text-blue-800" },
+      { label: "📸 Photo Challenge", className: "bg-red-100 text-red-800" },
+      { label: "800 m away", className: "" },
+    ],
+    rating: { stars: "★★★★★", score: "4.9" },
+    description:
+      'Join the "Blue Hour Challenge": Swim at sunset, snap a selfie with Segye’s octopus dish, win an NFT badge + 40% off water sports!',
+    extraBadges: [
+      { label: "🏆 Leaderboard", className: "bg-[#5D4FE1] text-white" },
+      { label: "🔒 SafeRoute Verified", className: "bg-green-100 text-green-800" },
+    ],
+    link: { text: "Scan Proof ↗", href: "#" },
+  },
+
+  {
+    id: 5,
     title: "Medina Maze of Djerba",
     images: [
       { src: "/activities/41.jpg", alt: "Colorful streets of Djerba" },
@@ -69,7 +113,7 @@ export const Activities = [
   },
 
   {
-    id: 5,
+    id: 6,
     title: "Sunset Sentinel of Mahdia",
     images: [
       { src: "/activities/51.jpg", alt: "Mahdia's Skifa Kahla at sunset" },
@@ -92,7 +136,7 @@ export const Activities = [
   },
 
   {
-    id: 6,
+    id: 7,
     title: "Pirate Voyage to Flamingo Island",
     images: [
       { src: "/activities/61.jpg", alt: "Pirate boat sailing from Djerba" },
@@ -114,7 +158,7 @@ export const Activities = [
   },
 
   {
-    id: 7,
+    id: 8,
     title: "El Ghriba Harmony Trail",
     images: [
       { src: "/activities/81.jpg", alt: "El Ghriba Synagogue exterior" },
@@ -202,52 +246,83 @@ export const  UsersData = [
     },
   ]
 
-  export const quests = [
-    {
-      id: 1,
-      title: "Hit party",
-      category: "Social",
-      distance: "1000 m away",
-      rating: 4.7,
-      image: "/placeholder.svg?height=120&width=120",
-      date: "April 19, 2025",
-      location: "Downtown Club",
-      exp: 10,
-    },
-    {
-      id: 2,
-      title: "Food Festival",
-      category: "Food",
-      distance: "2.5 km away",
-      rating: 4.8,
-      image: "/placeholder.svg?height=120&width=120",
-      date: "April 25, 2025",
-      location: "City Square",
-      exp: 15,
-    },
-    {
-      id: 3,
-      title: "Mountain Hike",
-      category: "Outdoor",
-      distance: "15 km away",
-      rating: 4.5,
-      image: "/placeholder.svg?height=120&width=120",
-      date: "May 2, 2025",
-      location: "Mountain Trail",
-      exp: 25,
-    },
-    {
-      id: 4,
-      title: "Art Exhibition",
-      category: "Culture",
-      distance: "3 km away",
-      rating: 4.3,
-      image: "/placeholder.svg?height=120&width=120",
-      date: "April 30, 2025",
-      location: "City Gallery",
-      exp: 8,
-    },
-  ]
+  
+ // quests.js
+export const quests = [
+  {
+    id: 1,
+    title: "Echoes of El Jem Challenge",
+    description: "Solve the puzzle hidden within the walls of El Jem amphitheater.",
+    time: "12h ago",
+    location: "El Jem, Mahdia",
+    category: "History & Culture",
+    image: "/activities/31.jpg",
+  },
+  {
+    id: 2,
+    title: "Segya Splash & Dine Challenge",
+    description: "Complete a kayaking circuit and savor a traditional meal.",
+    time: "4d ago",
+    location: "Segya",
+    category: "Adventure & Food",
+    image: "/activities/21.png",
+  },
+  {
+    id: 3,
+    title: "Mahdia Heritage Quest",
+    description: "Uncover Mahdia's historical landmarks through clues and riddles.",
+    time: "1d ago",
+    location: "Mahdia",
+    category: "History & Exploration",
+    image: "/activities/41.jpg",
+  },
+  {
+    id: 4,
+    title: "Djerba Artisan Hunt",
+    description: "Track down local artisans and collect handmade tokens.",
+    time: "2d ago",
+    location: "Djerba",
+    category: "Arts & Craftsmanship",
+    image: "/djerba.jpg",
+  },
+  {
+    id: 5,
+    title: "Ksour Sahara Survival Trial",
+    description: "Use traditional techniques to survive a day in the desert ksour.",
+    time: "6h ago",
+    location: "Tataouine",
+    category: "Survival & Culture",
+    image: "/ksour.jpg",
+  },
+  {
+    id: 6,
+    title: "Bardo Museum Time Travel",
+    description: "Match ancient artifacts with their historical periods.",
+    time: "3d ago",
+    location: "Tunis",
+    category: "Education & History",
+    image: "/bardo.jpg",
+  },
+  {
+    id: 7,
+    title: "Kerkouane Ruins Riddle",
+    description: "Decipher clues around the Punic ruins of Kerkouane.",
+    time: "5h ago",
+    location: "Kerkouane",
+    category: "Mystery & Archaeology",
+    image: "/kerkouane.jpg",
+  },
+  {
+    id: 8,
+    title: "Sidi Bou Said Photo Quest",
+    description: "Capture and recreate vintage postcards of the iconic town.",
+    time: "8h ago",
+    location: "Sidi Bou Said",
+    category: "Art & Exploration",
+    image: "/sidibousaid.jpg",
+  },
+];
+  
 
   export const categories = [
     { name: "Food", icon: "🍔" },

@@ -1,8 +1,9 @@
 "use client";
-import { Activities } from "../data/data";
 import Image from "next/image";
 import SecondNavbar from "../../components/secondnavbar/page";
 import { ArrowUpRight } from "lucide-react";
+import { Activities } from "../data/data"
+
 
 export default function ActivitiesPage() {
   return (
@@ -75,14 +76,23 @@ export default function ActivitiesPage() {
                     </div>
                   )}
 
-                  {/* Footer link and points */}
+                  {/* Footer with View Details button and points */}
                   <div className="flex justify-between items-center pt-4">
-                    <a
-                      href={activity.link?.href || "#"}
-                      className="text-sm font-semibold text-[#5D4FE1] flex items-center gap-1 hover:underline"
-                    >
-                      {activity.link?.text || "Explore"} <ArrowUpRight size={14} />
-                    </a>
+                    <div className="flex gap-2">
+                      <a
+                        href={activity.link?.href || "#"}
+                        className="text-sm font-semibold text-[#5D4FE1] flex items-center gap-1 hover:underline"
+                      >
+                        {activity.link?.text || "Explore"} <ArrowUpRight size={14} />
+                      </a>
+                      <a
+  href={`/details/${activity.id}`}
+  className="text-sm font-semibold text-[#5D4FE1] flex items-center gap-1 hover:underline"
+>
+  View Details
+</a>
+
+                    </div>
                     {activity.points && (
                       <span className="text-gray-700 font-semibold text-sm">
                         {activity.points} pts

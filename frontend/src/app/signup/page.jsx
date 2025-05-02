@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-
 export default function SignupPage() {
   const [form, setForm] = useState({
     firstName: '',
@@ -12,9 +11,10 @@ export default function SignupPage() {
     password: ''
   });
 
+  const [message, setMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const router = useRouter();
-
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -22,20 +22,22 @@ export default function SignupPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const nameRegex = /^[A-Za-z]+$/;
     const passwordRegex = /^[A-Za-z0-9]+$/;
-  
+
     if (!nameRegex.test(form.firstName) || !nameRegex.test(form.lastName)) {
-      alert('First Name and Last Name should contain only alphabetic characters.');
+      setMessage('First Name and Last Name should contain only alphabetic characters.');
+      setIsSuccess(false);
       return;
     }
-  
+
     if (!passwordRegex.test(form.password) || form.password.length < 8) {
-      alert('Password must be alphanumeric and at least 8 characters long.');
+      setMessage('Password must be alphanumeric and at least 8 characters long.');
+      setIsSuccess(false);
       return;
     }
-  
+
     try {
       const res = await fetch('http://localhost:5000/user/register', {
         method: 'POST',
@@ -45,19 +47,22 @@ export default function SignupPage() {
         body: JSON.stringify(form)
       });
 
-      const data = await res.text(); // Not .json(), since it’s just a string
+      const data = await res.text(); // backend sends plain text
 
       if (res.ok) {
-        alert('Account created successfully!');
-        router.push('/login')
+        setMessage('Account created successfully! Redirecting...');
+        setIsSuccess(true);
+        setTimeout(() => {
+          router.push('/login');
+        }, 2000); // wait 2 seconds then navigate
       } else {
-        alert(`Error: ${data}`);
+        setMessage(`Error: ${data}`);
+        setIsSuccess(false);
       }
-
-
     } catch (error) {
       console.error('Error:', error);
-      alert('Something went wrong.');
+      setMessage('Something went wrong.');
+      setIsSuccess(false);
     }
   };
 
@@ -102,6 +107,14 @@ export default function SignupPage() {
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9F7FFF]"
             required
           />
+
+          {/* Message */}
+          {message && (
+            <p className={`text-center text-sm ${isSuccess ? 'text-green-600' : 'text-red-600'}`}>
+              {message}
+            </p>
+          )}
+
           <button
             type="submit"
             className="w-full bg-[#8055FE] text-white py-2 rounded-lg hover:bg-[#6b46c1] transition-colors"
@@ -109,6 +122,7 @@ export default function SignupPage() {
             Sign Up
           </button>
         </form>
+
         <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account?{' '}
           <Link href="/login" className="text-[#8055FE] font-medium">Log in</Link>

@@ -13,6 +13,7 @@ export default function SecondNavbar({ className = "" }) {
     { href: "/profile", label: "Profile" },
     { href: "/community", label: "Community" },
     { href: "/activities", label: "Activities" },
+    { href: "/quest", label: "Quest" },
   ];
 
   return (
